@@ -1,5 +1,5 @@
 /// <reference path="createjs.d.ts"/>
-/// <reference path="dragonBones.ts">
+/// <reference path="dragonBones.ts"/>
 
 module dragonBones
 {
@@ -151,6 +151,11 @@ module dragonBones
 				    this._display.parent.removeChild(this._display);
 			    }
             }
+			
+			public updateBlendMode(blendMode:string):void
+			{
+				
+			}
         }
     }
 
@@ -232,18 +237,20 @@ module dragonBones
                 if (rect)
                 {
                     var shape: createjs.Shape = new createjs.Shape(null);
-                    CreateJSFactory._helpMatrix.a = 1;
-                    CreateJSFactory._helpMatrix.b = 0;
-                    CreateJSFactory._helpMatrix.c = 0;
-                    CreateJSFactory._helpMatrix.d = 1;
-					CreateJSFactory._helpMatrix.scale(1 / textureAtlas.scale, 1 / textureAtlas.scale);
-                    CreateJSFactory._helpMatrix.tx = -pivotX - rect.x;
-                    CreateJSFactory._helpMatrix.ty = -pivotY - rect.y;
-                    shape.graphics.beginBitmapFill(textureAtlas.image, null, CreateJSFactory._helpMatrix);
+					var newMatrix:createjs.Matrix2D = new createjs.Matrix2D(1, 0, 0, 1, 0, 0);
+                    newMatrix.a = 1;
+                    newMatrix.b = 0;
+                    newMatrix.c = 0;
+                    newMatrix.d = 1;
+					newMatrix.scale(1 / textureAtlas.scale, 1 / textureAtlas.scale);
+                    newMatrix.tx =  - rect.x-pivotX;
+                    newMatrix.ty = - rect.y-pivotY ;
+                    shape.graphics.beginBitmapFill(textureAtlas.image, null, newMatrix);
                     shape.graphics.drawRect(-pivotX, -pivotY, rect.width, rect.height);
+					shape.cache(-pivotX,-pivotY,rect.width,rect.height);
 
-                    (<any> shape).width = rect.width;
-                    (<any> shape).height = rect.height;
+                    //(<any> shape).width = rect.width;
+                    //(<any> shape).height = rect.height;
                 }
 			    return shape;
 		    }

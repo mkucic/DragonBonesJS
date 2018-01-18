@@ -3204,7 +3204,7 @@ module dragonBones
                     displayDataList = slotData.getDisplayDataList();
                     slot = this._generateSlot();
                     slot.name = slotData.name;
-                    slot._blendMode = slotData.blendMode;
+                    slot.setBlendMode(slotData.blendMode);
                     slot._originZOrder = slotData.zOrder;
                     slot._dislayDataList = displayDataList;
 
@@ -3878,11 +3878,11 @@ module dragonBones
 
         /** @private */
         public _displayList: Array<any>;
-        public getDisplayList(): Array
+        public getDisplayList(): Array<any>
         {
             return this._displayList;
         }
-        public setDisplayList(value: Array): void
+        public setDisplayList(value: Array<any>): void
         {
             if(!value)
             {
