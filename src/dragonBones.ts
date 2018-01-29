@@ -1034,7 +1034,7 @@ module dragonBones
                 this.weight = 1;
                 this.blend = true;
                 this.enabled = true;
-                this.tweenEnabled = true;
+                this.tweenEnabled = false;
 
                 this.updateTimelineStates();
             }
@@ -1524,7 +1524,7 @@ module dragonBones
                 this._isPlaying = false;
 
                 this.animationNameList = [];
-                this.tweenEnabled = true;
+                this.tweenEnabled = false;
                 this.timeScale = 1;
             }
 

@@ -687,7 +687,7 @@ var dragonBones;
                 this.weight = 1;
                 this.blend = true;
                 this.enabled = true;
-                this.tweenEnabled = true;
+                this.tweenEnabled = false;
                 this.updateTimelineStates();
             };
             AnimationState.prototype.fadeOut = function (fadeOutTime, pause) {
@@ -995,7 +995,7 @@ var dragonBones;
                 this._animationLayer = [];
                 this._isPlaying = false;
                 this.animationNameList = [];
-                this.tweenEnabled = true;
+                this.tweenEnabled = false;
                 this.timeScale = 1;
             }
             Animation.prototype.getLastAnimationName = function () {
